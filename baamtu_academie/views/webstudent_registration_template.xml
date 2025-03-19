@@ -1,0 +1,110 @@
+<odoo>
+    <record id="menu_student_form" model="website.menu">
+        <field name="name">S'inscrire</field>
+        <field name="url">student_webform</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">20</field>
+    </record>
+    <template id="custom_message" inherit_id="website.layout" name="Custom Header">
+            <xpath expr="//div[@id='wrapwrap']/main" position="before">
+                <t t-if="request.env.user and request.env.user.id">
+                    <div class="container">
+                        <div class="alert alert-info mt16" role="alert">
+                            <strong>Akksil ak diam / Bienvenue / Welcome</strong> BAAMTU ACADEMY!
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+    </template>
+    <template id="create_student" name="Inscription étudiant">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div style="display:flex;justify-content:center;aligns-items:center;margin-top:50px;" class="oe_structure">
+                    <div class="form-container">
+                        <h1 style="text-align:center;">Baamtu Académie</h1>
+                        <form role="form" action="/create/webstudent_registration_form" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <table>
+                                <tr style="padding-bottom: 10px;">
+                                    <td style="padding-bottom: 10px;padding-right: 20px;">
+                                        <label for="nom">Nom :</label>
+                                    </td>
+                                    <td style="padding-bottom: 10px;padding-right: 20px;">
+                                        <input class="form-control" required="required" t-att-value="name" type="text" id="name" name="name" />
+                                    </td>
+                                    <td style="padding-bottom: 10px;">
+                                        <label for="nom">Prénom :</label>
+                                    </td>
+                                    <td style="padding-bottom: 10px;" colspan="2">
+                                        <input class="form-control" required="required" t-att-value="last_name" type="text" id="last_name" name="last_name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom: 10px;padding-right: 20px;">
+                                        <label for="couriel">Courriel :</label>
+                                    </td>
+                                    <td style="padding-bottom: 10px;padding-right: 20px;">
+                                        <input class="form-control" t-att-value="email" type="email" id="email" name="email" />
+                                    </td>
+                                    <td>
+                                        <label for="mobile">Mobile :</label>
+                                    </td>
+                                    <td style="padding-bottom: 10px;" colspan="2">
+                                        <input class="form-control" t-att-value="mobile" type="text" id="mobile" name="mobile" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom: 10px;padding-right: 20px;">
+                                        <label for="dateNaissance">Date de naissance :</label>
+                                    </td>
+                                    <td style="padding-bottom: 10px;padding-right: 20px;">
+                                        <input type="date" id="date_of_birth" t-att-value="date_of_birth" class="form-control" name="date_of_birth" />
+                                    </td>
+                                    <td style="padding-bottom: 10px;">
+                                        <label for="ville">Ville :</label>
+                                    </td>
+                                    <td style="padding-bottom: 10px;" colspan="2">
+                                        <input type="text" id="ville" class="form-control" t-att-value="city" name="city" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="text-align: center;">
+                                        <input class="btn btn-primary" style="margin-bottom:50px;" type="submit" value="Soumettre"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+     <record id="student_thank" model="website.page">
+        <field name="name">Merci</field>
+        <field name="type">qweb</field>
+        <field name="url">student_thanks_you</field>
+        <field name="website_published">True</field>
+        <field name="key">baamtu_academie.student_thank</field>
+        <field name="arch" type="xml">
+            <t name="thanks" t-name="baamtu_academie.student_thank">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Merci</h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success" role="status">
+                                        Inscription réussie !
+                                    </div>
+                                    <div class="alert alert-success" role="status">
+                                       Vous recevrez un e-mail pour activer votre compte.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+</odoo>

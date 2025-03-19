@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_view_registration" model="ir.ui.view">
+        <field name="name">registration.tree</field>
+        <field name="model">baamtu_academy.registration</field>
+        <field name="arch" type="xml">
+            <tree>  
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="registration_date"/>
+            </tree>
+        </field>
+    </record> 
+    <record id="form_view_registration" model="ir.ui.view">
+        <field name="name">registration.form</field>
+        <field name="model">baamtu_academy.registration</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>   
+                    <button name="action_draft" string="Remettre au brouillon" type="object" attrs="{'invisible': [('state', '!=', 'canceled')]}" class="btn-primary"/>
+                    <button name="action_validated" string="Valider" type="object" attrs="{'invisible': [('state', 'in', ('validated','canceled'))]}" class="btn-primary"/>
+                    <button name="action_canceled" string="Annuler" type="object" attrs="{'invisible': [('state', 'in', ('draft','canceled'))]}"/>
+                    <field name="state" widget="statusbar"></field>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="course_id"/>
+                        <field name="registration_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record> 
+    <record id="search_view_registration" model="ir.ui.view">
+        <field name="name">registration.search</field>
+        <field name="model">baamtu_academy.registration</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="registration_date"/>
+            </search>
+        </field>
+    </record> 
+
+    <record id="action_registration" model="ir.actions.act_window">
+        <field name="name">Inscription</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">baamtu_academy.registration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

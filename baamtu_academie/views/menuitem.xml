@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="menu_baamtu_academy" name="Baamtu academy" sequence="0"/>
+    <menuitem id="menu_cours_content" sequence="0" name="Cours" parent="menu_baamtu_academy"/>
+    <menuitem id="menu_list_course"
+      sequence="0"
+      name="Liste des cours"
+      parent="menu_cours_content"
+      action="action_cours"/>
+      <menuitem id="menu_view"
+      sequence="1"
+      name="tableau dynamique des inscrits"
+      parent="menu_cours_content"
+      action="action_registration_course_view"/>
+    <menuitem id="menu_professor_content"
+      sequence="1"
+      name="Professeur"
+      parent="menu_baamtu_academy"
+      action="action_professor"/>
+    <menuitem id="menu_inscription" sequence="2" name="Inscription" parent="menu_baamtu_academy"/>
+    <menuitem id="menu_inscription_content"
+          sequence="1"
+          name="Inscription"
+          parent="menu_inscription"
+          action="action_registration"/>
+    <menuitem id="menu_inscription_wizard_content"
+          sequence="2"
+          name="Inscription groupée"
+          parent="menu_inscription"
+          action="registration_wizard_action"/>
+    <menuitem id="menu_student_content"
+      sequence="3"
+      name="Étudiant"
+      parent="menu_baamtu_academy"
+      action="action_student"/>
+    <menuitem id="menu_salle_content"
+      sequence="4"
+      name="Salle"
+      parent="menu_baamtu_academy"
+      action="action_classroom"/>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="tree_view_room" model="ir.ui.view">
+        <field name="name">classroom.tree</field>
+        <field name="model">baamtu_academy.classroom</field>
+        <field name="arch" type="xml">
+            <tree>  
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record> 
+    <record id="form_view_salle" model="ir.ui.view">
+        <field name="name">classroom.form</field>
+        <field name="model">baamtu_academy.classroom</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record> 
+    <record id="search_view_room" model="ir.ui.view">
+        <field name="name">classroom.search</field>
+        <field name="model">baamtu_academy.classroom</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record> 
+
+    <record id="action_classroom" model="ir.actions.act_window">
+        <field name="name">Salle</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">baamtu_academy.classroom</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

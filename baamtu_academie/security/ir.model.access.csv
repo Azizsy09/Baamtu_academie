@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_professor,access.professor,model_baamtu_academy_professor,group_academy_user,1,0,0,0
+access_student,access.student,model_baamtu_academy_student,group_academy_user,1,0,0,0
+access_professor_manager,access.professor.manager,model_baamtu_academy_professor,group_academy_manager,1,1,1,1
+access_room_manager,access.classroom.manager,model_baamtu_academy_classroom,group_academy_manager,1,1,1,1
+access_student_manager,access.student.manager,model_baamtu_academy_student,group_academy_manager,1,1,1,1
+access_registration_wizard_manager,access.registration_wizard.manager,model_baamtu_academy_registration_wizard,group_academy_manager,1,1,1,1
+access_course,access.course,model_baamtu_academy_course,group_academy_manager,1,1,1,1
+access_registration_manager,access.registration.manager,model_baamtu_academy_registration,group_academy_manager,1,1,1,1
+access_registration_view_manager,access.registration.view.manager,model_baamtu_academy_course_registration_report,group_academy_manager,1,1,1,1

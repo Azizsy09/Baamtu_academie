@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_view_cours" model="ir.ui.view">
+        <field name="name">course.tree</field>
+        <field name="model">baamtu_academy.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+                <field name="max_place"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="category"/>
+                <field name="classroom_id"/>
+                <field name="professor_id"/>
+                <field name="has_student"/>
+            </tree>
+        </field>
+    </record> 
+    <record id="view_calendar_course_model" model="ir.ui.view">
+            <field name="name">view.calendar.course.model</field>
+            <field name="model">baamtu_academy.course</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendrier des cours" date_start="start_date" date_stop="end_date" mode="year" color="name">
+                    <field name="name" filters="1"/>
+                </calendar>
+            </field>
+    </record>
+    <record id="form_view_cours" model="ir.ui.view">
+        <field name="name">course.form</field>
+        <field name="model">baamtu_academy.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                   <div class="alert alert-danger" role="alert" attrs="{'invisible': [('remaining_registrations', '&gt;', 0)]}">
+                        Il n'y a plus de places disponibles pour ce cours.
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="category"/>
+                            <field name="professor_id"/>
+                            <field name="classroom_id"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="active"/>
+                            <field name="has_student"/>
+                            <field name="max_place"/>
+                            <field name="remaining_registrations"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record> 
+    <record id="search_view_cours" model="ir.ui.view">
+        <field name="name">course.search</field>
+        <field name="model">baamtu_academy.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <filter name="cours_active" string="Cours actifs" domain="[('active', '=', True)]" />
+                <filter name="cours_desactive" string="Cours inactifs" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record> 
+    <record id="action_cours" model="ir.actions.act_window">
+        <field name="name">Cours</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">baamtu_academy.course</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+</odoo>

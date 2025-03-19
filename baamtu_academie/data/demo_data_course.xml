@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record model="baamtu_academy.course" id="demo_cours2">
+      <field name="name">Python</field>
+      <field name="code">21</field>
+      <field name="description">langage de programmation</field> 
+      <field name="active">true</field> 
+      <field name="max_place">20</field> 
+      <field name="start_date">2023-10-10</field> 
+      <field name="end_date">2024-07-10</field> 
+      <field name="category">computer_science</field> 
+    </record>
+  </data>
+</odoo>
+
+
+
+

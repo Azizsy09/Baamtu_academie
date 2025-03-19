@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_student_card" model="ir.actions.report">
+        <field name="name">Carte d'étudiant</field>
+        <field name="model">baamtu_academy.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">baamtu_academie.report_student_id_card</field>
+        <field name="report_file">baamtu_academie.report_student_id_card</field>
+        <field name="binding_model_id" ref="model_baamtu_academy_student"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

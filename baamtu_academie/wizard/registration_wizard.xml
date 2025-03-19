@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+      <record model="ir.ui.view" id="view_registration_wizard_form">
+            <field name="name">baamtu_academy.registration_wizard_form</field>
+            <field name="model">baamtu_academy.registration.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Assistant d'inscription en groupe aux cours">
+                    <group>
+                        <field name="course_ids" widget="many2many_tags" required="1"/>
+                        <field name="student_ids" required="1"/>
+                        <field name="registration_date"/>
+                    </group>
+                    <footer>
+                        <button name="registration_wizard_action" string="Creer" class="btn-primary" type="object"/>
+                        <button string="Annuler" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+      </record>
+      <record id="registration_wizard_action" model="ir.actions.act_window">
+        <field name="name">Assistant inscription</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">baamtu_academy.registration.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_registration_wizard_form"/>
+        <field name="target">new</field>
+     </record>
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_student_id_card">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <table class="table table-condensed" style="border:3px solid black;width:70%">
+                            <tr>
+                                <td width="40%"> 
+                                    <t t-if="not o.image_1920">
+                                        <img t-att-src="'/web/static/img/placeholder.png'" height="140" width="160"/>
+                                    </t>
+                                    <t t-if="o.image_1920">
+                                        <img t-att-src="'data:image:png;base64,%s'%to_text(o.image_1920)" height="180" width="200"/>
+                                    </t>
+                                </td>
+                                <td width="60%">
+                                    <table>
+                                        <tr>
+                                              <h5 class="text-center" style="color: #ff0000; font-weight: bold;">Baamtu academie</h5>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span t-field="o.last_name"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="o.name"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span>Matricule:</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="o.code"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span>Date de naissance:</span>   
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="o.date_of_birth"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                             <td class="text-center">
+                                                <span>Numero de téléphone:</span>   
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="o.mobile"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

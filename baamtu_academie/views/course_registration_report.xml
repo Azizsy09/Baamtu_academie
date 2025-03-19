@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="registration_view_course" model="ir.ui.view">
+        <field name="name">baamtu_academy.view.student.registration.course</field>
+        <field name="model">baamtu_academy.course_registration_report</field>
+        <field name="arch" type="xml">
+            <pivot string="Cours">
+                <field name="course_id" type="row"/>
+                <field name="registration_count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+     <record id="action_registration_course_view" model="ir.actions.act_window">
+        <field name="name">Vue des inscriptions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">baamtu_academy.course_registration_report</field>
+        <field name="view_mode">pivot</field>
+    </record>
+
+</odoo>

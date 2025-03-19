@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="url">/my/course</t>
+                <t t-set="title">Mes cours</t>
+            </t>
+        </xpath>
+    </template>
+    <template id="student_course_template">
+    <t t-call="portal.portal_layout">
+        <xpath expr="//main" position="inside">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h1 style="text-align: center;">Mes cours</h1>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2;">Libellé</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2;">Catégorie</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2;">Date de début</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2;">Date de fin</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2;">Professeur</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2;">Salle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="courses" t-as="course">
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><t t-esc="course.name"/></td>
+                                 <td style="padding: 10px; border: 1px solid #ddd;">
+                                    <t t-if="course.category == 'language'">Langue étrangère</t>
+                                    <t t-elif="course.category == 'computer_science'">Informatique</t>
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><t t-esc="course.start_date.strftime('%d/%m/%Y')"/></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><t t-esc="course.end_date.strftime('%d/%m/%Y')"/></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><t t-esc="course.professor_id.last_name"/> <t t-esc="course.professor_id.name"/></td>
+                                <td style="padding: 10px; border: 1px solid #ddd;"><t t-esc="course.classroom_id.name"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </xpath>
+    </t>
+    </template>
+</odoo>
